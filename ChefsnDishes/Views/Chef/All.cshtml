@@ -1,0 +1,23 @@
+@model List<Chef>
+
+<h3>All Dishes</h3>
+
+<table>
+    <thead>
+        <th>Name</th>
+        <th>DOB</th>
+        <th># of Dishes</th>
+    </thead>
+    <tbody>
+        @foreach (Chef chef in Model)
+        {
+            <tr>
+                <td>@chef.FullName()</td>
+                <td>@chef.GetAge()</td>
+                <td>@chef.CreatedDishes.Count()</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
