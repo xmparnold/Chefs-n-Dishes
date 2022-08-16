@@ -16,7 +16,7 @@ public class ChefController : Controller
     }
 
     [HttpGet("/chefs/all")]
-    public IActionResult Index()
+    public IActionResult All()
     {
         List<Chef> AllChefs = _context.Chefs
         .Include(chef => chef.CreatedDishes)
@@ -41,7 +41,7 @@ public class ChefController : Controller
         _context.Chefs.Add(newChef);
         _context.SaveChanges();
 
-        return RedirectToAction("All");
+        return All();
     }
 
     // [HttpGet("/chefs/{chefId}")]

@@ -21,6 +21,10 @@ public class DishController : Controller
     {
         List<Dish> AllDishes = _context.Dishes.ToList();
 
+        foreach (Dish dish in AllDishes) {
+            dish.ChefOfDish = _context.Chefs.FirstOrDefault(chef => chef.ChefId == dish.ChefId);
+        }
+
 
         return View("All", AllDishes);
     }
@@ -106,11 +110,11 @@ public class DishController : Controller
         }
 
         dbDish.Name = updatedDish.Name;
-        dbDish.Chef = updatedDish.Chef;
         dbDish.Tastiness = updatedDish.Tastiness;
         dbDish.Calories = updatedDish.Calories;
         dbDish.Description = updatedDish.Description;
         dbDish.UpdatedAt = DateTime.Now;
+        dbDish.ChefId = updatedDish.ChefId;
 
         _context.Dishes.Update(dbDish);
         _context.SaveChanges();

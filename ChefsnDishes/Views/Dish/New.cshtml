@@ -14,11 +14,11 @@
         </div>
 
         <div class="mb-3">
-            <label asp-for="Chef"></label>
-            <span asp-validation-for="Chef" class="text-danger font-weight-bold"></span>
-            <select asp-for="Chef">
+            <label asp-for="ChefId"></label>
+            <span asp-validation-for="ChefId" class="text-danger font-weight-bold"></span>
+            <select asp-for="ChefId">
                 @foreach (Chef chef in Model.AllChefs) {
-                    <option value="@chef.ChefId">@chef.FullName()</option>
+                    <option value=@chef.ChefId>@chef.FullName()</option>
                 }
             </select>
         </div>

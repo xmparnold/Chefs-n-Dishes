@@ -15,11 +15,6 @@ public class Dish {
     public string Name { get; set; }
 
     [Required]
-    [MinLength(3, ErrorMessage ="must be at least 3 characters.")]
-    [MaxLength(45, ErrorMessage ="must be 45 characters or less.")]
-    public string Chef { get; set; }
-
-    [Required]
     [Range(1, 5, ErrorMessage ="must be between 1 and 5.")]
     public int Tastiness { get; set; }
 
@@ -38,9 +33,11 @@ public class Dish {
     public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
 
+    [Display(Name="Chef")]
     public int ChefId { get; set; }
     public Chef? ChefOfDish { get; set; }
 
+    [NotMapped]
     public List<Chef> AllChefs { get; set; } = new List<Chef>();
 
 

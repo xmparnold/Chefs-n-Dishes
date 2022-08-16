@@ -1,5 +1,7 @@
 @model List<Dish>
 
+<a asp-controller="Home" asp-action="Index">Home</a>
+
 <h3>All Dishes</h3>
 
 <table>
@@ -14,7 +16,14 @@
         {
             <tr>
                 <td>@dish.Name</td>
-                <td>@dish.Chef</td>
+                @{
+                    if (dish.ChefOfDish != null) {
+                        <td>@dish.ChefOfDish.FullName()</td>
+                    }
+                    else {
+                        <td>No Chef Specified</td>
+                    }
+                }
                 <td>@dish.Tastiness</td>
                 <td>@dish.Calories</td>
             </tr>
